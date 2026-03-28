@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ActiveAgeingCenterFor from "../../assets/ActiveAgeingPageimg/ActiveAgeingCenterFor.svg";
 import ActiveAgeingCenterForBackground from "../../assets/ActiveAgeingPageimg/ActiveAgeingCenterForBackground.svg";
 import ActiveAgeingCenterForBrainIcon from "../../assets/ActiveAgeingPageimg/ActiveAgeingCenterForBrain.svg";
@@ -21,7 +21,7 @@ import ActiveAgeingCenterForCard from "../../components/ActiveAgeingCenterForCar
 import ActiveAgeingCenterPillars from "../../components/ActiveAgeingCenterPillars.jsx";
 import ActiveAgeingWhyChoose from "../../components/ActiveAgeingWhyChoose.jsx";
 import ClientFormContent from "../../components/ClientFormContent.jsx";
-import ClientForm from "../../components/ClientForm.jsx";
+const ClientForm = lazy(() => import("../../components/ClientForm.jsx"));
 function ActiveAgeingCentre() {
   const centerFor = [
     {
@@ -257,7 +257,15 @@ function ActiveAgeingCentre() {
             btnpara={"We typically respond within 24 hours"}
           />
           <div className="flex justify-center max-sm:justify-start">
-            <ClientForm />
+            <Suspense
+              fallback={
+                <div className="flex items-center justify-center py-10 text-gray-600">
+                  Loading...
+                </div>
+              }
+            >
+              <ClientForm />
+            </Suspense>
           </div>
         </section>
       </main>

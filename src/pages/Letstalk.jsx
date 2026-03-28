@@ -1,10 +1,11 @@
-import { React, useRef } from "react";
+import React, { Suspense, lazy, useRef } from "react";
 import LetsTalkHero from "../assets/LetsTalkPageimg/LetsTalkHero.svg";
 import LetstalkpageUserReview from "../components/LetstalkpageUserReview.jsx";
-import ClientForm from "../components/ClientForm.jsx";
 import LetstalkUserReview1 from "../assets/LetsTalkPageimg/LetstalkUserReview1.svg";
 import LetstalkDottedLine from "../assets/LetsTalkPageimg/LetstalkDottedLine.svg";
 import LetstalkSteps from "../components/LetstalkSteps.jsx";
+
+const ClientForm = lazy(() => import("../components/ClientForm.jsx"));
 
 function LetsTalk() {
   // User reviews displayed on the page
@@ -149,7 +150,15 @@ function LetsTalk() {
             className="absolute top-160 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl rounded-2xl
             max-lg:static max-lg:mt-6 max-lg:mx-auto"
           >
-            <ClientForm />
+            <Suspense
+              fallback={
+                <div className="flex items-center justify-center py-10 text-gray-600">
+                  Loading...
+                </div>
+              }
+            >
+              <ClientForm />
+            </Suspense>
           </div>
         </div>
       </section>

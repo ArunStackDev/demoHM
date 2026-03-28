@@ -32,9 +32,11 @@ import HomeClientReview from "../components/HomeClientsReview.jsx";
 const HomePagination = React.lazy(
   () => import("../components/HomePagination.jsx"),
 );
+const ClientForm = React.lazy(
+  () => import("../components/ClientForm.jsx"),
+);
 import HomeStartup1 from "../assets/HomePageimg/HomeStartup1.svg";
 import HomeStartup2 from "../assets/HomePageimg/HomeStartup2.svg";
-import ClientForm from "../components/ClientForm.jsx";
 import ClientFormContent from "../components/ClientFormContent.jsx";
 
 // Service cards shown in the "Specialised Support Initiatives" section
@@ -649,7 +651,15 @@ function Home() {
           btnpara={"We typically respond within 24 hours"}
         />
         <div className="flex justify-center max-lg:justify-start">
-          <ClientForm />
+          <Suspense
+            fallback={
+              <div className="flex items-center justify-center py-10 text-gray-600">
+                Loading...
+              </div>
+            }
+          >
+            <ClientForm />
+          </Suspense>
         </div>
       </section>
     </main>

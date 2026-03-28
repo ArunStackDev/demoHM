@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { Suspense, lazy, useState } from "react";
 import AboutpageStar1 from "../assets/AboutPageimg/AboutpageStar1.svg";
 import AboutpageStar2 from "../assets/AboutPageimg/AboutpageStar2.svg";
 import AboutpageHero1 from "../assets/AboutPageimg/AboutpageHero1.svg";
@@ -12,8 +12,9 @@ import AboutpageQuoteIcon from "../assets/AboutPageimg/AboutpageQuoteIcon.svg";
 import AboutpageMemberProfile from "../assets/AboutPageimg/AboutpageMemberProfile.svg";
 import AboutMeetTeam from "../components/AboutMeetTeam.jsx";
 
-import ClientForm from "../components/ClientForm.jsx";
 import ClientFormContent from "../components/ClientFormContent.jsx";
+
+const ClientForm = lazy(() => import("../components/ClientForm.jsx"));
 
 function About() {
   // Values displayed in the "Our Values" section
@@ -297,7 +298,15 @@ function About() {
           btnpara={"We typically respond within 24 hours"}
         />
         <div className="flex justify-center max-sm:justify-start">
-          <ClientForm />
+          <Suspense
+            fallback={
+              <div className="flex items-center justify-center py-10 text-gray-600">
+                Loading...
+              </div>
+            }
+          >
+            <ClientForm />
+          </Suspense>
         </div>
       </section>
     </main>

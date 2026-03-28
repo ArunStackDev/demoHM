@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import SeniorTravelHeroTourPicThree from "../../assets/SeniorTravelPageimg/SeniorTravelHeroTourPicThree.svg";
 import SeniorTravelHeroTourPicOne from "../../assets/SeniorTravelPageimg/SeniorTravelHeroTourPicOne.svg";
 import SeniorTravelHeroTourPicTwo from "../../assets/SeniorTravelPageimg/SeniorTravelHeroTourPicTwo.svg";
@@ -11,7 +11,7 @@ import SeniorFriendlyTravelExploration from "../../components/SeniorFriendlyTrav
 import ActiveAgeingWhyChoose from "../../components/ActiveAgeingWhyChoose.jsx";
 import SeniorTravelVideo from "../../assets/SeniorTravelPageimg/SeniorTravelVideo.mp4";
 import ClientFormContent from "../../components/ClientFormContent.jsx";
-import ClientForm from "../../components/ClientForm.jsx";
+const ClientForm = lazy(() => import("../../components/ClientForm.jsx"));
 function SeniorFriendlyTravel() {
   const exploration = [
     {
@@ -208,7 +208,15 @@ function SeniorFriendlyTravel() {
           btnpara={"We typically respond within 24 hours"}
         />
         <div className="flex justify-center max-sm:justify-start">
-          <ClientForm />
+          <Suspense
+            fallback={
+              <div className="flex items-center justify-center py-10 text-gray-600">
+                Loading...
+              </div>
+            }
+          >
+            <ClientForm />
+          </Suspense>
         </div>
       </section>
     </div>
