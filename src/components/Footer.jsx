@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LinkedinIcon from "../assets/Footerimg/LinkedinIcon.svg";
+import LinkedinIcon from "../assets/Footerimg/LinkedInIcon.svg";
 import FacebookIcon from "../assets/Footerimg/FacebookIcon.svg";
 import InstagramIcon from "../assets/Footerimg/InstagramIcon.svg";
 import PinterestIcon from "../assets/Footerimg/PinterestIcon.svg";
