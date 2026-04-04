@@ -10,7 +10,7 @@ import DigitalCareComprehensiveSupportFamilyArt from "../../assets/DigitalCareim
 import DigitalCareComprehensiveSupportCareIcon from "../../assets/DigitalCareimg/DigitalCareComprehensiveSupportCareIcon.svg";
 import DigitalCareComprehensiveSupportTransparencyIcon from "../../assets/DigitalCareimg/DigitalCareComprehensiveSupportTransparencyIcon.svg";
 import DigitalCareComprehensiveSupportBackground from "../../assets/DigitalCareimg/DigitalCareComprehensiveSupportBackground.svg";
-import ClientForm from "../../components/ClientForm.jsx";
+import ClientForm from "../../components/ClientFormLazy.jsx";
 import ClientFormContent from "../../components/ClientFormContent.jsx";
 import DigitalCareClientSesctionSeniors from "../../assets/DigitalCareimg/DigitalCareClientSesctionSeniors.svg";
 import DigitalCareBenefitsCardBackground from "../../assets/DigitalCareimg/DigitalCareBenefitsCardBackground.svg";

@@ -35,7 +35,7 @@ import HomeClientPic3 from "../assets/HomePageimg/HomeClientPic3.svg";
 import HomeClientReview from "../components/HomeClientsReview.jsx";
 import HomeStartup1 from "../assets/HomePageimg/HomeStartup1.svg";
 import HomeStartup2 from "../assets/HomePageimg/HomeStartup2.svg";
-import ClientForm from "../components/ClientForm.jsx";
+import ClientForm from "../components/ClientFormLazy.jsx";
 import ClientFormContent from "../components/ClientFormContent.jsx";
 import CIMLeftArrow from "../assets/CIMPageimg/CIMLeftArrow.svg";
 import CIMRightArrow from "../assets/CIMPageimg/CIMRightArrow.svg";

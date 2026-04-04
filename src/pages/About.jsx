@@ -14,7 +14,7 @@ import AboutMeetTeam from "../components/AboutMeetTeam.jsx";
 import AboutPageOurValueBackground from "../assets/AboutPageimg/AboutPageOurValueBackground.svg";
 import Seo from "../components/Seo.jsx";
 
-import ClientForm from "../components/ClientForm.jsx";
+import ClientForm from "../components/ClientFormLazy.jsx";
 import ClientFormContent from "../components/ClientFormContent.jsx";
 
 function About() {

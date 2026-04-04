@@ -21,7 +21,7 @@ import ActiveAgeingCenterForCard from "../../components/ActiveAgeingCenterForCar
 import ActiveAgeingCenterPillars from "../../components/ActiveAgeingCenterPillars.jsx";
 import WhyChoose from "../../components/WhyChoose.jsx";
 import ClientFormContent from "../../components/ClientFormContent.jsx";
-import ClientForm from "../../components/ClientForm.jsx";
+import ClientForm from "../../components/ClientFormLazy.jsx";
 import ActiveAgeingHeroKnowMoreArrowIcon from "../../assets/ActiveAgeingPageimg/ActiveAgeingHeroKnowMoreArrowIcon.svg";
 import Seo from "../../components/Seo.jsx";
 function ActiveAgeingCentre() {

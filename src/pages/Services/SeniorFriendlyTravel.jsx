@@ -11,7 +11,7 @@ import SeniorFriendlyTravelExploration from "../../components/SeniorFriendlyTrav
 import WhyChoose from "../../components/WhyChoose.jsx";
 import SeniorTravelVideo from "../../assets/SeniorTravelPageimg/SeniorTravelVideo.mp4";
 import ClientFormContent from "../../components/ClientFormContent.jsx";
-import ClientForm from "../../components/ClientForm.jsx";
+import ClientForm from "../../components/ClientFormLazy.jsx";
 import VideoPlayIcon from "../../assets/SeniorTravelPageimg/VideoPlayIcon.svg";
 import Seo from "../../components/Seo.jsx";
 function SeniorFriendlyTravel() {

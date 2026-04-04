@@ -13,7 +13,7 @@ import HomeHealthSupportNeedSunIcon from "../../assets/HomeHealthSupportPageimg/
 import HomeHealthSupportNeedsCard from "../../components/HomeHealthSupportNeedsCard.jsx";
 import HomeHealthIndependentLivingCard from "../../components/HomeHealthIndependentLivingCard.jsx";
 import SeniorTravelVideo from "../../assets/SeniorTravelPageimg/SeniorTravelVideo.mp4";
-import ClientForm from "../../components/ClientForm.jsx";
+import ClientForm from "../../components/ClientFormLazy.jsx";
 import ClientFormContent from "../../components/ClientFormContent.jsx";
 import VideoPlayIcon from "../../assets/SeniorTravelPageimg/VideoPlayIcon.svg"; 
 import Seo from "../../components/Seo.jsx";

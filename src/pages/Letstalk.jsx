@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import LetsTalkHero from "../assets/LetsTalkPageimg/LetsTalkHero.svg";
 import LetstalkpageUserReviewCard from "../components/LetstalkpageUserReviewCard.jsx";
-import ClientForm from "../components/ClientForm.jsx";
+import ClientForm from "../components/ClientFormLazy.jsx";
 import LetstalkUserReview1 from "../assets/LetsTalkPageimg/LetstalkUserReview1.svg";
 import LetstalkDottedLine from "../assets/LetsTalkPageimg/LetstalkDottedLine.svg";
 import LetstalkSteps from "../components/LetstalkSteps.jsx";
