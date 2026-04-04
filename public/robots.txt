@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.happymindz.com/sitemap.xml
+Sitemap: https://bespoke-selkie-fd3370.netlify.app/sitemap.xml
