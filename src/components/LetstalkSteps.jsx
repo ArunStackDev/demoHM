@@ -8,11 +8,11 @@ function LetstalkSteps({ stepNumber, stepTilte, stepDescribtion }) {
         {stepNumber}
       </div>
       {/* Step title */}
-      <h3 className="text-center mt-8 w-full p-1 text-lg sm:text-xl font-bold max-sm:text-base">
+      <h3 className="text-center mt-8 w-full p-1 text-xl font-bold">
         {stepTilte}
       </h3>
       {/* Step description */}
-      <p className="p-2 text-sm sm:text-base text-center font-medium max-sm:text-xs">
+      <p className="p-2 text-xl text-center font-medium">
         {stepDescribtion}
       </p>
     </article>

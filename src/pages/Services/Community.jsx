@@ -24,6 +24,7 @@ import CIMDynamicImage4 from "../../assets/CIMPageimg/CIMDynamicImage4.svg";
 import CIMLeftArrow from "../../assets/CIMPageimg/CIMLeftArrow.svg";
 import CIMRightArrow from "../../assets/CIMPageimg/CIMRightArrow.svg";
 import CIMPartnerBtn from "../../assets/CIMPageimg/CIMPartnerBtn.svg";
+import Seo from "../../components/Seo.jsx";
 
 const dynamicImages = [
   { src: CIMDynamicImage1, alt: "Community moment 1" },
@@ -64,7 +65,7 @@ function Community() {
       title: "Shared Discovery",
       imgIcon: CIMCardArrowIcon,
       content:
-        "Meaningful opportunities to contribute, share wisdom, and stay engaged.",
+        "The journey from being alone to finding companionship through group travel and outings."
     },
     {
       title: "Peace of Mind",
@@ -82,24 +83,30 @@ function Community() {
 
   return (
     <div className="w-full min-h-screen overflow-x-hidden">
+      <Seo
+        title="Community Intervention Model"
+        description="Engage with our community intervention model that connects seniors through meaningful activities, friendships, and support."
+        schema="service"
+        schemaName="Community Intervention Model"
+      />
       {/* Hero Section */}
-      <header className="bg-gradient-to-b from-[#ffffff] to-[#e7f5f5] w-full flex flex-col items-center justify-center px-4 py-16 sm:py-20">
-        <h1 className="mx-auto mt-2 inline-flex items-center justify-center gap-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold relative max-w-[88vw]">
+      <header className="  h-180 bg-gradient-to-b from-[#ffffff] to-[#e7f5f5] w-full flex flex-col items-center justify-center px-4 py-16 sm:py-20">
+        <h1 className="mx-auto mt-2  inline-flex items-center justify-center gap-4 text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold relative max-w-[88vw]">
           <span>Bloom </span>
-          <span className="bg-gradient-to-r from-[#36A178] to-[#10B2D4] bg-clip-text text-transparent">
+          <span className="heading-gradient bg-clip-text text-transparent">
             Circle
           </span>
           <img
             src={AboutpageStar1}
             alt="Star accent"
-            className="absolute left-95 top-0 max-lg:left-auto max-lg:right-6 max-lg:top-0 max-lg:w-4 max-lg:h-4 max-md:right-2"
+            className="absolute  -right-5 -top-2 max-lg:left-auto max-lg:right-6 max-lg:top-0 max-lg:w-4 max-lg:h-4 max-md:right-2 "
             loading="eager"
             fetchPriority="high"
           />
           <img
             src={AboutpageStar2}
             alt="Star accent"
-            className="absolute left-100 top-6 max-lg:left-auto max-lg:right-2 max-lg:top-4 max-lg:w-3 max-lg:h-3"
+            className="absolute -right-8 top-5 max-lg:left-auto max-lg:right-2 max-lg:top-4 max-lg:w-3 max-lg:h-3"
             loading="eager"
             fetchPriority="high"
           />
@@ -114,7 +121,7 @@ function Community() {
           fetchPriority="high"
           className="w-full max-w-6xl rounded-4xl object-cover h-[220px] sm:h-[300px] md:h-[360px] lg:h-[420px] mt-6 p-2"
         />
-        <p className="text-gray-800 text-center text-sm sm:text-base md:text-lg lg:text-xl font-medium max-w-5xl mt-6 mb-8">
+        <p className="text-gray-800 text-center text-xl sm:text-base md:text-xl lg:text-xl font-medium max-w-5xl mt-10 mb-8">
           It is a proactive, group-based approach to wellness. Instead of
           treating aging as an isolated journey, we view it as a social one. We
           strive to create structured environments where specialized care,
@@ -122,7 +129,7 @@ function Community() {
           supportive senior community.
         </p>
       </header>
-      <main className="w-full">
+      <main className="w-full ">
         {/* Community Support Section */}
         <section
           className="relative w-full bg-gradient-to-b from-[#e5f8f8] to-[#3fb5ae] px-4 py-16 sm:py-20"
@@ -141,23 +148,25 @@ function Community() {
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mt-2 text-center max-w-[90vw]"
             >
               Community{" "}
-              <span className="bg-gradient-to-r from-[#489740] via-[#32a176] to-[#10B2D4] bg-clip-text text-transparent">
+              <span className="heading-gradient bg-clip-text text-transparent">
                 Support Matters
               </span>
             </h2>
-            <p className="text-gray-800 p-2 text-center text-sm sm:text-base md:text-lg font-medium max-w-4xl mt-4">
+            <p className="text-gray-800 p-2 text-center text-sm sm:text-base md:text-2xl  font-medium max-w-7xl mt-4">
               Isolation is often the greatest challenge for seniors. At Bloom
-              Circle we create an atmosphere that offers—
+              Circle we create an atmosphere that offers :
             </p>
             {/* Support Cards */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-sm:gap-4">
+            <div className="mt-8 flex w-5xl flex-wrap justify-center gap-6 max-sm:gap-4">
               {communitySupportCard.map((card) => (
-                <CIMSupportCard
-                  key={card.title}
-                  title={card.title}
-                  imageIcon={card.imgIcon}
-                  content={card.content}
-                />
+                <div className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+                  <CIMSupportCard
+                    key={card.title}
+                    title={card.title}
+                    imageIcon={card.imgIcon}
+                    content={card.content}
+                  />
+                </div>
               ))}
             </div>
           </div>
@@ -172,7 +181,7 @@ function Community() {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center max-w-[90vw]"
           >
             The{" "}
-            <span className="bg-gradient-to-r from-[#489740] via-[#32a176] to-[#10B2D4] bg-clip-text text-transparent">
+            <span className="heading-gradient bg-clip-text text-transparent">
               Impact
             </span>
           </h2>
@@ -186,29 +195,29 @@ function Community() {
                 decoding="async"
               />
               <img
-                src={CIMImpactCommunitySessionRating}
-                alt="Community sessions rating"
-                className="w-50 object-cover h-50  absolute left-[0%] top-[11%]"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
                 src={CIMImpactLocationCoveredRating}
                 alt="Locations covered rating"
-                className="w-50 object-cover h-50 absolute left-[20%] top-[4%]"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                src={CIMImpactSeniorsReachRating}
-                alt="Seniors reached rating"
-                className="w-50 object-cover h-50  absolute left-[50%] -top-[5%]"
+                className="w-50 object-cover h-50  absolute left-[0%] top-[11%]"
                 loading="lazy"
                 decoding="async"
               />
               <img
                 src={CIMImpactOutingRating}
                 alt="Outings rating"
+                className="w-50 object-cover h-50 absolute left-[20%] top-[4%]"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src={CIMImpactCommunitySessionRating}
+                alt="Community sessions rating"
+                className="w-50 object-cover h-50  absolute left-[50%] -top-[5%]"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src={CIMImpactSeniorsReachRating}
+                alt="Seniors reached rating"
                 className="w-50 object-cover h-50  absolute left-[80%] top-[6%]"
                 loading="lazy"
                 decoding="async"
@@ -216,13 +225,6 @@ function Community() {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:hidden">
               <img
-                src={CIMImpactCommunitySessionRating}
-                alt="Community sessions rating"
-                className="w-full h-auto object-contain"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
                 src={CIMImpactLocationCoveredRating}
                 alt="Locations covered rating"
                 className="w-full h-auto object-contain"
@@ -230,15 +232,22 @@ function Community() {
                 decoding="async"
               />
               <img
-                src={CIMImpactSeniorsReachRating}
-                alt="Seniors reached rating"
+                src={CIMImpactOutingRating}
+                alt="Outings rating"
                 className="w-full h-auto object-contain"
                 loading="lazy"
                 decoding="async"
               />
               <img
-                src={CIMImpactOutingRating}
-                alt="Outings rating"
+                src={CIMImpactCommunitySessionRating}
+                alt="Community sessions rating"
+                className="w-full h-auto object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src={CIMImpactSeniorsReachRating}
+                alt="Seniors reached rating"
                 className="w-full h-auto object-contain"
                 loading="lazy"
                 decoding="async"
@@ -256,11 +265,11 @@ function Community() {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center max-w-4xl"
           >
             Our Communities in{" "}
-            <span className="bg-gradient-to-r from-[#489740] via-[#32a176] to-[#10B2D4] bg-clip-text text-transparent">
+            <span className="heading-gradient bg-clip-text text-transparent">
               Action
             </span>
           </h2>
-          <p className="text-gray-800 p-2 text-center text-base md:text-lg font-medium max-w-5xl mt-5">
+          <p className="text-gray-800 p-2 text-center text-base md:text-2xl  font-medium max-w-7xl mt-5">
             At Happymindz, we create a stage for our seniors to shine, and
             discover the best version of themselves. These are the moments where
             laughter, friendship, and purpose come together through community
@@ -277,7 +286,7 @@ function Community() {
                 <img
                   src={CIMLeftArrow}
                   alt="Previous"
-                  className="h-8 w-8 sm:h-10 sm:w-10 hover:bg-blue-500 hover:rounded-full"
+                 className="sm:h-10 sm:w-10 hover:bg-blue-500 hover:rounded-full  h-10 w-10 bg-[#33A3A4]  object-center border-2 rounded-full border-[#33A3A4] hover:border-3"
                   loading="lazy"
                   decoding="async"
                 />
@@ -319,8 +328,8 @@ function Community() {
                 <img
                   src={CIMRightArrow}
                   alt="Next"
-                  className="h-8 w-8 sm:h-10 sm:w-10 hover:bg-blue-500 hover:rounded-full"
-                  loading="lazy"
+                  className="sm:h-10 sm:w-10 hover:bg-blue-500 hover:rounded-full  h-10 w-10 bg-[#33A3A4]  object-center border-2 rounded-full border-[#33A3A4] hover:border-3"
+                   loading="lazy"
                   decoding="async"
                 />
               </button>
@@ -346,11 +355,13 @@ function Community() {
         >
           <h2
             id="partner-heading"
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-[#489740] via-[#32a176] to-[#10B2D4] bg-clip-text text-transparent font-bold text-center max-w-4xl"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl heading-gradient bg-clip-text text-transparent font-bold  text-center max-w-4xl"
           >
-            Partner With Us
+            Partner{" "}
+            <span className="text-black">with{" "}</span>
+            Us
           </h2>
-          <p className="text-gray-800 p-2 text-center text-base md:text-lg font-medium max-w-2xl mt-5">
+          <p className="text-gray-800 p-2 text-center text-base md:text-2xl font-medium max-w-6xl  mt-5">
             Represent a community looking to partner with us for a session? We
             would love to hear from you.
           </p>

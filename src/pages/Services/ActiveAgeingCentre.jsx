@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import ActiveAgeingCenterFor from "../../assets/ActiveAgeingPageimg/ActiveAgeingCenterFor.svg";
 import ActiveAgeingCenterForBackground from "../../assets/ActiveAgeingPageimg/ActiveAgeingCenterForBackground.svg";
 import ActiveAgeingCenterForBrainIcon from "../../assets/ActiveAgeingPageimg/ActiveAgeingCenterForBrain.svg";
@@ -19,9 +19,11 @@ import ActiveAgeingWhyChooseLarge from "../../assets/ActiveAgeingPageimg/ActiveA
 import ActiveAgeingWhyChooseSmall from "../../assets/ActiveAgeingPageimg/ActiveAgeingWhyChooseSmall.svg";
 import ActiveAgeingCenterForCard from "../../components/ActiveAgeingCenterForCard.jsx";
 import ActiveAgeingCenterPillars from "../../components/ActiveAgeingCenterPillars.jsx";
-import ActiveAgeingWhyChoose from "../../components/ActiveAgeingWhyChoose.jsx";
+import WhyChoose from "../../components/WhyChoose.jsx";
 import ClientFormContent from "../../components/ClientFormContent.jsx";
-const ClientForm = lazy(() => import("../../components/ClientForm.jsx"));
+import ClientForm from "../../components/ClientForm.jsx";
+import ActiveAgeingHeroKnowMoreArrowIcon from "../../assets/ActiveAgeingPageimg/ActiveAgeingHeroKnowMoreArrowIcon.svg";
+import Seo from "../../components/Seo.jsx";
 function ActiveAgeingCentre() {
   const centerFor = [
     {
@@ -103,6 +105,12 @@ function ActiveAgeingCentre() {
   ];
   return (
     <>
+      <Seo
+        title="Active Ageing Centre"
+        description="Discover our Active Ageing Centre with wellness programs, community activities, and support designed for seniors."
+        schema="service"
+        schemaName="Active Ageing Centre"
+      />
       <header className="relative w-full flex flex-col items-center justify-center gap-8 px-4 sm:px-6 lg:px-12 py-10 lg:py-0 lg:flex-row lg:h-150">
         {/* Hero content */}
         <section className="w-full max-w-3xl p-5 flex flex-col justify-center lg:ml-8">
@@ -112,15 +120,15 @@ function ActiveAgeingCentre() {
               Ageing Centre
             </span>
           </h1>
-          <p className="p-2 text-center lg:text-left text-gray-800 text-sm sm:text-base md:text-lg lg:text-xl font-medium max-w-2xl mt-6 mb-8">
+          <p className="p-2 text-center lg:text-left text-gray-800 text-2xl sm:text-base md:text-2xl lg:text-2xl font-medium max-w-2xl mt-6 mb-8">
             Our Active Ageing Centre is a dedicated space designed for seniors
-            to stay physically active, mentally sharp, and socially connected.
-            Backed by the Easedementia framework, we provide a gentle
+            to stay physically active, mentally sharp, and socially connected. We provide a gentle
             environment where every senior is empowered to age with dignity,
             joy, and purpose.
           </p>
-          <button className="self-center lg:self-start bg-[#33A3A4] text-white m-2 w-45 text-sm p-2 font-medium hover:bg-[#2e8e90] duration-300 h-12 rounded-full">
-            ??Join Our Community ??
+          <button className="self-center flex items-center justify-center lg:self-start bg-[#33A3A4] text-white m-2 w-42 text-base p-2 font-medium hover:bg-[#2e8e90] duration-300 h-12 rounded-2xl hover:shadow-md shadow-gray-400">
+            Know More
+            <img src={ActiveAgeingHeroKnowMoreArrowIcon} alt="Know more arrow" className="size-4 ml-3"/>
           </button>
         </section>
         {/* Hero image */}
@@ -151,14 +159,14 @@ function ActiveAgeingCentre() {
       </header>
       <main>
         {/* Center For section */}
-        <section className="w-full flex flex-col gap-8 bg-gradient-to-b from-[#E2E8F0] to-[#ffffff] px-4 sm:px-6 lg:px-12 py-10 lg:flex-row lg:items-center lg:justify-between">
-          <div className="w-full ml-0 flex flex-col lg:ml-8 lg:w-2/5">
-            <h2 className="w-full max-w-xl p-2 text-center lg:text-left sm:text-4xl md:text-5xl lg:text-5xl font-bold mt-2">
+        <section className="w-full  flex flex-col gap-8 bg-gradient-to-b from-[#E2E8F0] to-[#ffffff] px-4 sm:px-6 lg:px-12 py-10 lg:flex-row lg:items-center lg:justify-between">
+          <div className="w-full  ml-0 flex flex-col lg:ml-8 lg:w-2/5">
+            <h2 className="w-full  max-w-xl p-2 text-center lg:text-left sm:text-4xl md:text-5xl lg:text-6xl font-bold mt-2">
               Who is the{" "}
               <span className="bg-gradient-to-r from-[#489740] via-[#32a176] to-[#10B2D4] bg-clip-text text-transparent">
                 Active Ageing Center{" "}
               </span>
-              For?
+              for?
             </h2>
             <figure>
               <img
@@ -170,7 +178,7 @@ function ActiveAgeingCentre() {
               />
             </figure>
           </div>
-          <div className="grid w-full grid-cols-1 sm:grid-cols-2 gap-4 place-items-center place-content-center lg:w-1/2">
+          <div className="grid w-full grid-cols-1 sm:grid-cols-2 gap-4 place-items-stretch place-content-center lg:w-1/2">
             {centerFor.map((card) => (
               <ActiveAgeingCenterForCard
                 key={card.title}
@@ -183,13 +191,13 @@ function ActiveAgeingCentre() {
         </section>
         {/* Pillars section */}
         <section className="flex flex-col items-center mt-10 w-full bg-gradient-to-b from-[#ffffff] via-[#8cd1cd] to-[#3EB4AE] px-4 sm:px-6 lg:px-12 py-10">
-          <h2 className="w-full max-w-2xl mt-4 p-2 text-center lg:text-left sm:text-4xl md:text-5xl lg:text-5xl font-bold">
+          <h2 className="w-full  max-w-4xl mt-4 p-2 text-center lg:text-left sm:text-4xl md:text-5xl lg:text-6xl font-bold">
             Active Ageing Centre{" "}
             <span className="bg-gradient-to-r from-[#489740] via-[#32a176] to-[#10B2D4] bg-clip-text text-transparent">
               Pillars{" "}
             </span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl font-medium max-w-3xl text-center text-gray-800 mt-4">
+          <p className="text-base sm:text-lg md:text-2xl font-medium max-w-4xl text-center text-gray-800 mt-4">
             We focus on key areas to ensure a well-rounded experience for our
             members.
           </p>
@@ -207,13 +215,13 @@ function ActiveAgeingCentre() {
         {/* Why Choose section */}
         <section className="w-full h-auto lg:h-180 flex flex-col gap-8 bg-white px-4 sm:px-6 lg:px-12 py-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="relative ml-0 lg:ml-8 flex flex-col w-full max-w-2xl items-center lg:items-start">
-            <h2 className="w-full p-2 text-center lg:text-left sm:text-4xl md:text-5xl lg:text-5xl font-bold ">
+            <h2 className="w-full p-2 text-center lg:text-left sm:text-4xl md:text-5xl lg:text-6xl font-bold ">
               Why Choose{" "}
               <span className="bg-gradient-to-r from-[#489740] via-[#32a176] to-[#10B2D4] bg-clip-text text-transparent">
                 Happymindz?
               </span>
             </h2>
-            <p className="text-base sm:text-lg md:text-xl font-medium text-center lg:text-left p-5 text-gray-800 mt-2 max-w-2xl">
+            <p className="text-base sm:text-lg md:text-2xl font-medium text-center lg:text-left pt-5 pb-5 text-gray-800 mt-2 max-w-2xl">
               We focus on key areas to ensure a well-rounded experience for our
               members.
             </p>
@@ -237,7 +245,7 @@ function ActiveAgeingCentre() {
           </div>
           <div className="flex flex-col justify-center items-center w-full gap-2 place-items-center place-content-center lg:w-1/2">
             {whyChoose.map((item) => (
-              <ActiveAgeingWhyChoose
+              <WhyChoose
                 key={item.title}
                 icon={item.icon}
                 title={item.title}
@@ -247,7 +255,7 @@ function ActiveAgeingCentre() {
           </div>
         </section>
         {/* Contact form section */}
-        <section className="w-full h-170 grid grid-cols-2 gap-10 bg-gradient-to-b from-[#E2E8F0] to-[#ffffff] items-start max-sm:grid-cols-1 max-sm:gap-8 max-sm:h-auto max-sm:px-4 max-sm:py-8 px-6 py-10">
+        <section className="w-full grid grid-cols-2 gap-10 bg-gradient-to-b from-[#E2E8F0] to-[#ffffff] items-start max-sm:grid-cols-1 max-sm:gap-8 max-sm:h-auto max-sm:px-4 max-sm:py-8 px-6 py-10">
           <ClientFormContent
             titleContent={"Ready to Rediscover Your "}
             spanContent={"Spark?"}
@@ -257,15 +265,7 @@ function ActiveAgeingCentre() {
             btnpara={"We typically respond within 24 hours"}
           />
           <div className="flex justify-center max-sm:justify-start">
-            <Suspense
-              fallback={
-                <div className="flex items-center justify-center py-10 text-gray-600">
-                  Loading...
-                </div>
-              }
-            >
-              <ClientForm />
-            </Suspense>
+            <ClientForm />
           </div>
         </section>
       </main>
@@ -274,3 +274,4 @@ function ActiveAgeingCentre() {
 }
 
 export default ActiveAgeingCentre;
+

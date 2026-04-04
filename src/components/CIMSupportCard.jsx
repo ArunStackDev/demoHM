@@ -5,7 +5,7 @@ function CIMSupportCard({ title, imageIcon, content }) {
   return (
     <>
       {/* Support Card */}
-      <article className="relative h-[275px] max-[425px]:h-[240px] flex justify-center items-center w-[260px] max-w-[320px] sm:max-w-[360px] lg:max-w-[300px] aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-b from-[#eef9ca] to-transparent">
+      <article className="relative h-[230px] max-[425px]:h-[150px] flex justify-center items-center w-[300px] max-w-[320px] sm:max-w-[360px] lg:max-w-[300px] rounded-3xl overflow-hidden bg-gradient-to-b from-[#eef9ca] to-transparent mb-3">
         <img
           src={CIMSupportCardBackground}
           alt="Support card background"
@@ -13,20 +13,20 @@ function CIMSupportCard({ title, imageIcon, content }) {
           loading="lazy"
           decoding="async"
         />
-        <div className="relative z-10 flex h-70 flex-col p-4 sm:p-5 max-[425px]:h-[220px] max-[425px]:p-3">
+        <div className="relative z-10 flex h-full flex-col p-2 sm:p-3 max-[425px]:p-2">
           {/* Card Header */}
-          <header className="flex items-center gap-2 rounded-2xl px-4 py-3 max-[425px]:px-3 max-[425px]:py-2">
+          <header className="flex items-center gap-2 rounded-2xl px-3 py-2 max-[425px]:px-2 max-[425px]:py-1">
             <img
               src={imageIcon}
               alt={`${title} icon`}
               className="h-6 w-6 object-contain"
               loading="lazy"
-          decoding="async"
+              decoding="async"
             />
-            <h3 className="text-base sm:text-lg font-semibold">{title}</h3>
+            <h3 className="text-xl md:text-xl sm:text-lg font-semibold leading-tight">{title}</h3>
           </header>
           {/* Card Body */}
-          <div className="mt-2 flex-1 w-[240px] rounded-2xl bg-white/90 p-2 sm:p-5 text-sm sm:text-base max-[425px]:text-xs font-semibold text-gray-700">
+          <div className="flex-1 w-full p-5  text-justify-center rounded-2xl bg-white/90  text-xl md:text-xl sm:text-sm  max-[425px]:text-sm font-semibold text-gray-800 overflow-hidden">
             {content}
           </div>
         </div>

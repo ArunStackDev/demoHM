@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-function ActiveAgeingWhyChoose({icon,title,content}) {
+function WhyChoose({ icon, title, content }) {
   return (
     <article className="flex w-full max-w-xl flex-col items-center gap-4 rounded-2xl p-3 text-center sm:flex-row sm:items-start sm:text-left">
       {/* Why choose icon */}
@@ -16,16 +16,16 @@ function ActiveAgeingWhyChoose({icon,title,content}) {
       {/* Why choose content */}
       <section className="space-y-2">
         <header>
-          <h3 className="text-base sm:text-lg font-bold text-slate-900">
+          <h3 className="text-xl sm:text-lg md:text-xl font-bold text-slate-900">
             {title}
           </h3>
         </header>
-        <p className="text-sm sm:text-base md:text-lg lg:text-sm font-semibold text-gray-800">
+        <p className="text-xl sm:text-base md:text-xl lg:text-xl font-semibold text-gray-800">
           {content}
         </p>
       </section>
     </article>
-  )
+  );
 }
 
-export default ActiveAgeingWhyChoose
+export default WhyChoose;

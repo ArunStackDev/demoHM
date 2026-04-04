@@ -15,7 +15,7 @@ function ActiveAgeingCenterPillars({ mainContent, subContent, subIcon }) {
             bg-[#EAFFFE]
           "
         >
-          <p className="w-full sm:max-w-[520px] lg:max-w-[600px] ml-6 sm:ml-8 px-3 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm md:text-base font-medium text-gray-700 sm:text-left">
+          <p className="w-full sm:max-w-[520px] lg:max-w-[600px]  ml-6 sm:ml-8 px-3 sm:px-6 py-2 sm:py-3 text-xl sm:text-sm md:text-xl font-medium text-gray-700 sm:text-left">
             {mainContent}
           </p>
         </div>
@@ -44,7 +44,7 @@ function ActiveAgeingCenterPillars({ mainContent, subContent, subIcon }) {
           decoding="async"
           className="size-5 sm:size-6 lg:size-8 rotate-0 sm:rotate-5 m-1"
         />
-        <p className="text-xs sm:text-sm w-full font-semibold rotate-0 sm:rotate-5 m-1 text-center sm:text-left">
+        <p className="text-xl  md:text-base sm:text-sm w-full font-semibold rotate-0 sm:rotate-5 m-1 text-center sm:text-left">
           {subContent}
         </p>
       </aside>

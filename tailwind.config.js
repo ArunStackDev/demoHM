@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'Open Sans', 'Helvetica Neue', 'sans-serif'],
+        sans: ['Inter', 'Public Sans', 'system-ui', 'sans-serif'],
       },
     },
   },

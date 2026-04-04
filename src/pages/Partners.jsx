@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import Seo from "../components/Seo.jsx";
 
 function Partners() {
   return (
-    <div>Partners</div>
-  )
+    <div>
+      <Seo
+        title="Partners"
+        description="Partner with Happymindz to support senior wellness and community programs."
+        schema="webpage"
+      />
+      Partners
+    </div>
+  );
 }
 
-export default Partners
+export default Partners;

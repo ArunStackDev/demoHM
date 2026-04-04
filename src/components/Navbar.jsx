@@ -26,7 +26,7 @@ function Navbar() {
 
   return (
     <div
-      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-20 px-4 md:px-8 transition-colors duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-20 px-4 md:px-8 transition-colors duration-200 ${
         isScrolled ? "bg-white" : "bg-transparent"
       }`}
     >
@@ -36,7 +36,7 @@ function Navbar() {
       <div className="hidden lg:flex gap-4 xl:gap-8">
         <Link
           to="/"
-          className="text-black font-semibold font-poppins inline-block gradient-underline hover:text-gray-700 text-sm xl:text-base whitespace-nowrap"
+          className="text-black font-semibold font-poppins inline-block gradient-underline hover:text-gray-700 text-xl xl:text-base whitespace-nowrap"
           onClick={closeMenu}
         >
           Home
@@ -85,30 +85,6 @@ function Navbar() {
                   Active Ageing Centre
                 </Link>
                 <Link
-                  to="/services/community"
-                  className="px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50"
-                  onClick={closeMenu}
-                  role="menuitem"
-                >
-                  Community
-                </Link>
-                <Link
-                  to="/services/digital-care"
-                  className="px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50"
-                  onClick={closeMenu}
-                  role="menuitem"
-                >
-                  Digital Care
-                </Link>
-                <Link
-                  to="/services/home-health-care"
-                  className="px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50"
-                  onClick={closeMenu}
-                  role="menuitem"
-                >
-                  Home Health Care
-                </Link>
-                <Link
                   to="/services/personalized-interventions"
                   className="px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50"
                   onClick={closeMenu}
@@ -117,12 +93,36 @@ function Navbar() {
                   Personalized Interventions
                 </Link>
                 <Link
+                  to="/services/community"
+                  className="px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50"
+                  onClick={closeMenu}
+                  role="menuitem"
+                >
+                  CIM
+                </Link>
+                <Link
+                  to="/services/home-health-support"
+                  className="px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50"
+                  onClick={closeMenu}
+                  role="menuitem"
+                >
+                  Home Health Support
+                </Link>
+                <Link
                   to="/services/senior-friendly-travel"
                   className="px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50"
                   onClick={closeMenu}
                   role="menuitem"
                 >
                   Senior Friendly Travel
+                </Link>
+                <Link
+                  to="/services/digital-care"
+                  className="px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50"
+                  onClick={closeMenu}
+                  role="menuitem"
+                >
+                  Digital Support
                 </Link>
               </div>
             </div>
@@ -209,7 +209,7 @@ function Navbar() {
         </Link>
         <Link
           to="/letstalk"
-          className="font-semibold font-poppins inline-block bg-gradient-to-r from-[#8BB94C] to-[#1FA2BE] text-white rounded-full px-3 py-1 mr-2 text-sm xl:text-base whitespace-nowrap"
+          className="font-semibold font-poppins inline-block heading-gradient text-white rounded-full px-3 py-1 mr-2 text-sm xl:text-base whitespace-nowrap"
           onClick={closeMenu}
         >
           Let's Talk
@@ -303,33 +303,6 @@ function Navbar() {
                     Active Ageing Centre
                   </NavLink>
                   <NavLink
-                    to="/services/community"
-                    className={({ isActive }) =>
-                      `text-black font-semibold font-poppins inline-flex items-center justify-center gradient-underline hover:text-gray-700 text-sm bg-white rounded-md px-4 py-2 w-full ${isActive ? "mobile-active-pill" : ""}`
-                    }
-                    onClick={closeMenu}
-                  >
-                    Community
-                  </NavLink>
-                  <NavLink
-                    to="/services/digital-care"
-                    className={({ isActive }) =>
-                      `text-black font-semibold font-poppins inline-flex items-center justify-center gradient-underline hover:text-gray-700 text-sm bg-white rounded-md px-4 py-2 w-full ${isActive ? "mobile-active-pill" : ""}`
-                    }
-                    onClick={closeMenu}
-                  >
-                    Digital Care
-                  </NavLink>
-                  <NavLink
-                    to="/services/home-health-care"
-                    className={({ isActive }) =>
-                      `text-black font-semibold font-poppins inline-flex items-center justify-center gradient-underline hover:text-gray-700 text-sm bg-white rounded-md px-4 py-2 w-full ${isActive ? "mobile-active-pill" : ""}`
-                    }
-                    onClick={closeMenu}
-                  >
-                    Home Health Care
-                  </NavLink>
-                  <NavLink
                     to="/services/personalized-interventions"
                     className={({ isActive }) =>
                       `text-black font-semibold font-poppins inline-flex items-center justify-center gradient-underline hover:text-gray-700 text-sm bg-white rounded-md px-4 py-2 w-full ${isActive ? "mobile-active-pill" : ""}`
@@ -339,6 +312,24 @@ function Navbar() {
                     Personalized Interventions
                   </NavLink>
                   <NavLink
+                    to="/services/community"
+                    className={({ isActive }) =>
+                      `text-black font-semibold font-poppins inline-flex items-center justify-center gradient-underline hover:text-gray-700 text-sm bg-white rounded-md px-4 py-2 w-full ${isActive ? "mobile-active-pill" : ""}`
+                    }
+                    onClick={closeMenu}
+                  >
+                    CIM
+                  </NavLink>
+                  <NavLink
+                    to="/services/home-health-support"
+                    className={({ isActive }) =>
+                      `text-black font-semibold font-poppins inline-flex items-center justify-center gradient-underline hover:text-gray-700 text-sm bg-white rounded-md px-4 py-2 w-full ${isActive ? "mobile-active-pill" : ""}`
+                    }
+                    onClick={closeMenu}
+                  >
+                    Home Health Support
+                  </NavLink>
+                  <NavLink
                     to="/services/senior-friendly-travel"
                     className={({ isActive }) =>
                       `text-black font-semibold font-poppins inline-flex items-center justify-center gradient-underline hover:text-gray-700 text-sm bg-white rounded-md px-4 py-2 w-full ${isActive ? "mobile-active-pill" : ""}`
@@ -346,6 +337,15 @@ function Navbar() {
                     onClick={closeMenu}
                   >
                     Senior Friendly Travel
+                  </NavLink>
+                  <NavLink
+                    to="/services/digital-care"
+                    className={({ isActive }) =>
+                      `text-black font-semibold font-poppins inline-flex items-center justify-center gradient-underline hover:text-gray-700 text-sm bg-white rounded-md px-4 py-2 w-full ${isActive ? "mobile-active-pill" : ""}`
+                    }
+                    onClick={closeMenu}
+                  >
+                    Digital Support
                   </NavLink>
                 </div>
               )}

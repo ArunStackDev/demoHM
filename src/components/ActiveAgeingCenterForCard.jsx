@@ -2,7 +2,7 @@ import React from "react";
 
 function ActiveAgeingCenterForCard({ icon, title, content }) {
   return (
-    <article className="group relative w-full max-w-sm overflow-hidden rounded-2xl p-4 sm:p-5">
+    <article className="group  relative flex h-full w-full max-w-sm flex-col overflow-hidden rounded-2xl p-4 sm:p-5 min-h-[240px] sm:min-h-[260px]">
       {/* Card icon */}
       <figure className="flex h-12 w-12 items-center justify-center rounded-xl">
         <img
@@ -16,11 +16,11 @@ function ActiveAgeingCenterForCard({ icon, title, content }) {
 
       {/* Card copy */}
       <header>
-        <h3 className="mt-4 text-base sm:text-lg font-bold text-slate-900">
+        <h3 className="mt-4 text-xl sm:text-xl font-bold text-slate-900">
           {title}
         </h3>
       </header>
-      <p className="mt-2 text-start text-sm sm:text-base md:text-lg lg:text-sm font-medium text-gray-800">
+      <p className="mt-2 text-start text-sm sm:text-base md:text-xl lg:text-xl font-medium text-gray-800">
         {content}
       </p>
     </article>

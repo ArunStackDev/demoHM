@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LinkedinIcon from "../assets/Footerimg/LinkedInIcon.svg";
+import LinkedinIcon from "../assets/Footerimg/LinkedinIcon.svg";
 import FacebookIcon from "../assets/Footerimg/FacebookIcon.svg";
 import InstagramIcon from "../assets/Footerimg/InstagramIcon.svg";
 import PinterestIcon from "../assets/Footerimg/PinterestIcon.svg";
@@ -80,20 +80,20 @@ function Footer() {
             <Link to="/services/active-ageing-centre" className="hover:underline">
               Active Ageing Centre
             </Link>
-            <Link to="/services/community" className="hover:underline">
-              Community
-            </Link>
-            <Link to="/services/digital-care" className="hover:underline">
-              Digital Care
-            </Link>
-            <Link to="/services/home-health-care" className="hover:underline">
-              Home Health Care
-            </Link>
             <Link to="/services/personalized-interventions" className="hover:underline">
               Personalized Interventions
             </Link>
+            <Link to="/services/community" className="hover:underline">
+              CIM
+            </Link>
+            <Link to="/services/home-health-support" className="hover:underline">
+              Home Health Support
+            </Link>
             <Link to="/services/senior-friendly-travel" className="hover:underline">
               Senior Friendly Travel
+            </Link>
+            <Link to="/services/digital-care" className="hover:underline">
+              Digital Support
             </Link>
           </div>
         </div>

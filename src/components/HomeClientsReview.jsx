@@ -5,14 +5,14 @@ function HomeClientsReview({ review, isCenter, className = "" }) {
 
   return (
     <article
-      className={`h-105 w-80 max-md:h-auto max-md:w-72 rounded-xl shadow-lg p-5 flex flex-col gap-3 overflow-hidden transition-transform duration-600 ${className} ${
+      className={`review-card w-full border border-gray-200 max-w-[20rem] sm:max-w-[22rem] md:max-w-[32rem] lg:max-w-[34rem] xl:max-w-[24rem] 2xl:max-w-[26rem] rounded-2xl shadow-lg p-5 sm:p-6 flex flex-col gap-3 transition-transform duration-400 overflow-hidden h-[22rem] md:h-[24rem] lg:h-[25rem] ${className} ${
         isCenter
-          ? "scale-110 max-md:scale-100 bg-gradient-to-b from-[#BAF5ED] to-[#ffffff]"
-          : "scale-100 bg-white"
+          ? "bg-gradient-to-b from-[#BAF5ED] to-[#ffffff] lg:scale-105"
+          : "bg-white"
       }`}
     >
       {/* Review text */}
-      <p className="flex-1 mt-5 text-sm font-semibold text-gray-700 leading-relaxed overflow-hidden">
+      <p className="review-text flex-1 text-sm sm:text-base font-semibold text-gray-700 leading-relaxed overflow-hidden">
         {review.reviewDescription}
       </p>
       {/* Reviewer identity */}
@@ -25,8 +25,10 @@ function HomeClientsReview({ review, isCenter, className = "" }) {
           decoding="async"
         />
         <div className="leading-tight">
-          <div className="font-semibold text-sm text-black">{review.name}</div>
-          <div className="text-sm  font-semibold text-gray-500">
+          <div className="font-semibold text-sm sm:text-base text-black">
+            {review.name}
+          </div>
+          <div className="text-xs sm:text-sm font-semibold text-gray-500">
             {review.clientLocation}
           </div>
         </div>

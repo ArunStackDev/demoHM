@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 VITE_API_FORMS_URL=https://apiforms.com
 VITE_FORM_ID=PmPOIFDHBofzrcbk6aYj
  */}
-
+import clientformbackground from "../assets/ClientFormimg/clientformbackground.svg"
 const FORM_ID = "PmPOIFDHBofzrcbk6aYj"
 const API_URL = "https://apiforms.com"
 
@@ -15,6 +15,7 @@ export default function ContactUsForm() {
   const [apiError, setApiError] = useState('')
   const [captchaToken, setCaptchaToken] = useState(null)
   const [currentStep, setCurrentStep] = useState(1)
+  const [shake, setShake] = useState(false)
 
   useEffect(() => {
     fetch(API_URL + '/api/forms/' + FORM_ID + '/schema')
@@ -38,7 +39,14 @@ export default function ContactUsForm() {
     return () => window.removeEventListener('message', onMsg)
   }, [])
 
-  if (!schema) return <p style={{ color: '#9ca3af', fontFamily: 'system-ui', margin:'200px 0px 0px 300px'}} >Loading…</p>
+  if (!schema) return (
+    <p
+      style={{ color: '#9ca3af', fontFamily: 'system-ui' }}
+      className="mt-24 mx-auto w-fit text-center"
+    >
+      Loading…
+    </p>
+  )
 
   const d = schema.design || {}
   const totalSteps = schema.steps?.length || 1
@@ -48,8 +56,8 @@ export default function ContactUsForm() {
 
   const inputSx = {
     width: '100%', boxSizing: 'border-box', padding: '8px 12px',
-    background: d.inputBg || '#fff',
-    border: '1px solid ' + (d.borderColor || '#d1d5db'),
+    background: '#fff',
+    border: '1.5px solid #111827',
     borderRadius: (d.borderRadius || 6) + 'px',
     fontSize: (d.inputFontSize || 14) + 'px',
     color: d.textColor || '#374151',
@@ -78,7 +86,7 @@ export default function ContactUsForm() {
 
   function renderField(f) {
     const lbl = f.label || f.name
-    const ph = isPlaceholder ? lbl : ''
+    const ph = lbl
     const err = errors[f.name]
     const label = !isPlaceholder && <label style={labelSx}>{lbl}{f.required && <span style={{ color: '#ef4444' }}> *</span>}</label>
     const errEl = err && <p style={{ color: '#ef4444', fontSize: '12px', margin: '2px 0 0' }}>{err}</p>
@@ -120,90 +128,37 @@ export default function ContactUsForm() {
 
       if (empty) return
 
-      // Type-specific strict validation
-      if (f.type === 'email') {
-        const email = String(v).trim()
-        const emailRx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
-        if (!emailRx.test(email)) newErrors[f.name] = 'Enter a valid email address'
+      const nameFields = new Set(['first_name', 'last_name', 'name', 'firstname', 'lastname', 'firstName', 'lastName'])
+      const isNameField = nameFields.has(f.name)
+      const isMobileField = ['mobile', 'mobile_no', 'phone', 'phone_no', 'phonenumber'].includes(f.name)
+      const isEmailField = f.type === 'email' || ['email', 'email_id'].includes(f.name)
+
+      if (isNameField) {
+        const val = String(v).trim()
+        const onlyLetters = /^[A-Za-z\s]+$/.test(val)
+        if (val.length < 3) { newErrors[f.name] = 'Minimum 3 letters required'; return }
+        if (!onlyLetters) { newErrors[f.name] = 'Only letters allowed'; return }
         return
       }
 
-      if (f.type === 'url') {
-        try {
-          const u = new URL(String(v))
-          if (u.protocol !== 'http:' && u.protocol !== 'https:') throw new Error('bad')
-        } catch {
-          newErrors[f.name] = 'Enter a valid URL'
-        }
-        return
-      }
-
-      if (f.type === 'tel') {
+      if (isMobileField) {
         const digits = String(v).replace(/\D/g, '')
-        if (digits.length < 10 || digits.length > 15) newErrors[f.name] = 'Enter a valid phone number'
+        if (digits.length !== 10) { newErrors[f.name] = 'Mobile number must be exactly 10 digits'; return }
         return
       }
 
-      if (f.type === 'number' || f.type === 'range') {
-        const num = Number(v)
-        if (!Number.isFinite(num)) { newErrors[f.name] = 'Enter a valid number'; return }
-        if (f.min != null && num < Number(f.min)) { newErrors[f.name] = `Minimum allowed is ${f.min}`; return }
-        if (f.max != null && num > Number(f.max)) { newErrors[f.name] = `Maximum allowed is ${f.max}`; return }
+      if (isEmailField) {
+        const email = String(v).trim()
+        const emailRx = /^[A-Z0-9._%+-]{4,}@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+        if (!emailRx.test(email)) newErrors[f.name] = 'Email must have at least 4 letters before @'
         return
-      }
-
-      if (f.type === 'date') {
-        const isValidDate = /^\d{4}-\d{2}-\d{2}$/.test(String(v)) && !Number.isNaN(Date.parse(String(v)))
-        if (!isValidDate) newErrors[f.name] = 'Enter a valid date'
-        return
-      }
-
-      if (f.type === 'time') {
-        const isValidTime = /^([01]\d|2[0-3]):[0-5]\d$/.test(String(v))
-        if (!isValidTime) newErrors[f.name] = 'Enter a valid time'
-        return
-      }
-
-      if (f.type === 'checkbox-group') {
-        if (!Array.isArray(v) || v.length === 0) newErrors[f.name] = 'Select at least one option'
-        return
-      }
-
-      if (f.type === 'file') {
-        if (v.size > 5 * 1024 * 1024) { newErrors[f.name] = 'File must be under 5MB'; return }
-        if (f.accept && v.type) {
-          const accepted = String(f.accept)
-            .split(',')
-            .map(s => s.trim().toLowerCase())
-            .filter(Boolean)
-          const fileType = v.type.toLowerCase()
-          const fileExt = (v.name || '').toLowerCase().split('.').pop()
-          const ok = accepted.some(a => {
-            if (a.startsWith('.')) return fileExt && ('.' + fileExt) === a
-            if (a.endsWith('/*')) return fileType.startsWith(a.replace('/*', ''))
-            return fileType === a
-          })
-          if (!ok) newErrors[f.name] = 'Unsupported file type'
-        }
-        return
-      }
-
-      // Default text validation
-      if (typeof v === 'string') {
-        const val = v.trim()
-        if (f.minLength != null && val.length < Number(f.minLength)) { newErrors[f.name] = `Minimum ${f.minLength} characters`; return }
-        if (f.maxLength != null && val.length > Number(f.maxLength)) { newErrors[f.name] = `Maximum ${f.maxLength} characters`; return }
-        if (f.pattern) {
-          try {
-            const rx = new RegExp(f.pattern)
-            if (!rx.test(val)) newErrors[f.name] = 'Invalid format'
-          } catch {
-            // ignore invalid pattern from schema
-          }
-        }
       }
     })
     setErrors(newErrors)
+    if (Object.keys(newErrors).length > 0) {
+      setShake(true)
+      setTimeout(() => setShake(false), 500)
+    }
     return Object.keys(newErrors).length === 0
   }
 const handleFormSubmit = (body) => {
@@ -240,7 +195,7 @@ fetch(url, {
   async function onSubmit(e) {
     e.preventDefault()
     if (!validateStep()) return
-    if (schema.captchaEnabled && !captchaToken) { setApiError('Please complete the CAPTCHA above'); return }
+    if (schema.captchaEnabled && !captchaToken) { setApiError('Please complete the CAPTCHA above'); setShake(true); setTimeout(() => setShake(false), 500); return }
     setStatus('submitting')
     setApiError('')
     try {
@@ -268,11 +223,24 @@ fetch(url, {
     } catch (err) {
       setStatus('idle')
       setApiError(err.message || 'Something went wrong. Please try again.')
+      setShake(true)
+      setTimeout(() => setShake(false), 500)
     }
   }
 
   if (status === 'success') return (
-    <div style={{ maxWidth: (d.maxWidth || 600) + 'px', margin: '150px 50px 0px 100px', padding: (d.paddingY || 48) + 'px ' + (d.paddingX || 16) + 'px', textAlign: 'center', fontFamily: d.fontFamily || 'system-ui', background: d.bgColor || 'transparent', borderRadius: (d.formBorderRadius || 0) + 'px' }}>
+    <div
+      style={{
+        maxWidth: (d.maxWidth || 600) + 'px',
+        margin: 'clamp(3rem, 10vh, 9rem) auto 0',
+        padding: (d.paddingY || 48) + 'px ' + (d.paddingX || 16) + 'px',
+        textAlign: 'center',
+        fontFamily: d.fontFamily || 'system-ui',
+        background: d.bgColor || 'transparent',
+        borderRadius: (d.formBorderRadius || 0) + 'px',
+      }}
+      className="w-full px-4 sm:px-6"
+    >
       <div style={{ width: '52px', height: '52px', borderRadius: '50%', background: '#dcfce7', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', fontSize: '24px' }}>✓</div>
       <h3 style={{ fontSize: '18px', fontWeight: 600, color: d.textColor || '#374151', margin: '0 0 8px' }}>Submitted!</h3>
       <p style={{ fontSize: '14px', color: d.textColor || '#374151', opacity: 0.7, margin: 0 }}>{d.successMessage || 'Thank you! Your response has been submitted.'}</p>
@@ -281,15 +249,67 @@ fetch(url, {
 
   const stepInfo = totalSteps > 1 ? schema.steps?.find(s => s.stepNumber === currentStep) : null
 console.log("Final URL:", API_URL + "/api/forms/" + FORM_ID + "/schema");
+  const isFirstName = (f) => ['first_name', 'firstname', 'firstName'].includes(f?.name)
+  const isLastName = (f) => ['last_name', 'lastname', 'lastName'].includes(f?.name)
+  const firstNameField = stepFields.find(isFirstName)
+  const lastNameField = stepFields.find(isLastName)
+
+  function renderFieldsWithNameRow() {
+    const out = []
+    const hasNameRow = firstNameField && lastNameField
+    stepFields.forEach(f => {
+      if (hasNameRow && isFirstName(f)) {
+        out.push(
+          <div key="name-row" className="flex flex-col gap-3 lg:flex-row">
+            <div className="flex-1 min-w-0">{renderField(firstNameField)}</div>
+            <div className="flex-1 min-w-0">{renderField(lastNameField)}</div>
+          </div>
+        )
+        return
+      }
+      if (hasNameRow && isLastName(f)) return
+      out.push(renderField(f))
+    })
+    return out
+  }
+
   return (
     <form
       onSubmit={onSubmit}
       noValidate
-      className="w-full max-w-[520px] md:max-w-[480px] lg:max-w-[520px] 
-  max-h-[70vh] overflow-y-auto p-6 bg-white 
-  mt-10 md:ml-10 lg:ml-16 xl:ml-20
+      style={{
+        backgroundImage: `url(${clientformbackground})`,
+        backgroundSize: '100% 100%',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+      className={`w-full max-w-[380px] md:max-w-[420px] lg:max-w-[480px] xl:max-w-[520px]
+  lg:min-h-[85vh] p-6
+  mt-10 mx-auto lg:mx-0 lg:ml-20
   flex flex-col gap-3 rounded-2xl shadow shadow-2xl shadow-gray-600 
-  max-lg:ml-0 max-lg:mt-4 max-lg:max-h-none max-sm:p-4">
+  bg-white/70 backdrop-blur-md border border-white/40
+  max-lg:mt-4 max-sm:p-4 ${shake ? 'animate-shake' : ''}`}>
+      <style>{`
+        @keyframes form-shake {
+          0%, 100% { transform: translateX(0); }
+          20% { transform: translateX(-6px); }
+          40% { transform: translateX(6px); }
+          60% { transform: translateX(-4px); }
+          80% { transform: translateX(4px); }
+        }
+        .animate-shake {
+          animation: form-shake 0.4s ease-in-out;
+        }
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        input[type=number] {
+          -moz-appearance: textfield;
+          appearance: textfield;
+        }
+      `}</style>
       {totalSteps > 1 && (
         <div>
           <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginBottom: '12px' }}>
@@ -300,7 +320,7 @@ console.log("Final URL:", API_URL + "/api/forms/" + FORM_ID + "/schema");
           {stepInfo && <div style={{ fontWeight: 600, fontSize: '15px', marginBottom: '4px', color: d.textColor || '#374151' }}>{stepInfo.title}</div>}
         </div>
       )}
-      {stepFields.map(renderField)}
+      {renderFieldsWithNameRow()}
       {currentStep === totalSteps && schema.captchaEnabled && <iframe src={API_URL + '/captcha?formId=' + FORM_ID} scrolling="no" style={{ border: 'none', width: '305px', height: '65px', overflow: 'hidden' }} />}
       {apiError && <p style={{ padding: '10px 14px', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: (d.borderRadius || 6) + 'px', color: '#dc2626', fontSize: '14px', margin: 0 }}>{apiError}</p>}
       <div style={{ display: 'flex', gap: '8px' }}>
