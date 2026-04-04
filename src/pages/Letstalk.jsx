@@ -100,6 +100,7 @@ function LetsTalk() {
         description="Get in touch with Happymindz to learn about senior care services, community programs, and support options."
         schema="webpage"
       />
+      <h1 className="sr-only">Contact Happymindz</h1>
       {/* Hero section */}
       <header className="relative  w-screen h-200 flex flex-col items-center justify-center">
         <img

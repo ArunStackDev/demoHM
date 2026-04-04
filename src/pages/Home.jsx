@@ -239,6 +239,7 @@ function Home() {
         description="Happymindz helps seniors live joyful, active lives with community programs, wellness support, travel experiences, and home health care."
         ogType="website"
         schema="organization"
+        preloadImages={[HomeHero]}
       />
       <style>{`
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -295,6 +296,7 @@ function Home() {
             className="w-screen h-full"
             loading="eager"
             fetchPriority="high"
+            decoding="async"
           />
           <div
             className="absolute inset-0 bg-white/40"
@@ -606,7 +608,6 @@ function Home() {
                   />
                   <div
                     className="flex items-center justify-center gap-2 bg-blue-300 h-5 w-20 rounded-2xl"
-                    role="tablist"
                     aria-label="Community image selector"
                   >
                     {dynamicImages.map((image, index) => (

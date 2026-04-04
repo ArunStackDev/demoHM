@@ -10,6 +10,7 @@ function PersonalizedInterventions() {
         schema="service"
         schemaName="Personalized Interventions"
       />
+      <h1 className="sr-only">Personalized Interventions</h1>
       PersonalizedInterventions
     </div>
   );

@@ -32,6 +32,7 @@ function Seo({
   schema = "webpage",
   schemaName,
   schemaServiceType,
+  preloadImages = [],
 }) {
   const location = useLocation();
   const baseUrl = getBaseUrl();
@@ -91,6 +92,19 @@ function Seo({
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
+
+      {preloadImages.map((img) => {
+        const href = normalizeUrl(baseUrl, img);
+        return (
+          <link
+            key={href}
+            rel="preload"
+            as="image"
+            href={href}
+            fetchpriority="high"
+          />
+        );
+      })}
 
       {jsonLd && (
         <script type="application/ld+json">

@@ -88,14 +88,19 @@ export default function ContactUsForm() {
     const lbl = f.label || f.name
     const ph = lbl
     const err = errors[f.name]
-    const label = !isPlaceholder && <label style={labelSx}>{lbl}{f.required && <span style={{ color: '#ef4444' }}> *</span>}</label>
+    const label = !isPlaceholder && (
+      <label htmlFor={f.name} style={labelSx}>
+        {lbl}
+        {f.required && <span style={{ color: '#ef4444' }}> *</span>}
+      </label>
+    )
     const errEl = err && <p style={{ color: '#ef4444', fontSize: '12px', margin: '2px 0 0' }}>{err}</p>
     const wrap = (children) => <div key={f.name} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>{children}{errEl}</div>
 
     if (f.type === 'textarea')
-      return wrap(<>{label}<textarea name={f.name} rows={4} placeholder={ph} value={values[f.name] || ''} onChange={onChange} style={{ ...inputSx, resize: 'vertical' }} /></>)
+      return wrap(<>{label}<textarea id={f.name} name={f.name} rows={4} placeholder={ph} value={values[f.name] || ''} onChange={onChange} style={{ ...inputSx, resize: 'vertical' }} /></>)
     if (f.type === 'select')
-      return wrap(<>{label}<select name={f.name} value={values[f.name] || ''} onChange={onChange} style={inputSx}><option value="">-- Select --</option>{(f.options || []).map(o => <option key={o} value={o}>{o}</option>)}</select></>)
+      return wrap(<>{label}<select id={f.name} name={f.name} value={values[f.name] || ''} onChange={onChange} style={inputSx}><option value="">-- Select --</option>{(f.options || []).map(o => <option key={o} value={o}>{o}</option>)}</select></>)
     if (f.type === 'radio')
       return wrap(<>{label}{(f.options || []).map(o => <label key={o} style={rowSx}><input type="radio" name={f.name} value={o} checked={values[f.name] === o} onChange={onChange} /> {o}</label>)}</>)
     if (f.type === 'checkbox-group')
@@ -106,7 +111,7 @@ export default function ContactUsForm() {
       return wrap(<>{label}<label htmlFor={f.name} style={{...inputSx,display:'flex',alignItems:'center',gap:'10px',cursor:'pointer'}}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span style={{flex:1,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',opacity:values[f.name]?1:0.6}}>{values[f.name]?values[f.name].name:'Choose file…'}</span>{f.accept&&<span style={{fontSize:'11px',opacity:0.4,whiteSpace:'nowrap'}}>{f.accept}</span>}</label><input type="file" id={f.name} name={f.name} accept={f.accept||undefined} style={{position:'absolute',width:'1px',height:'1px',opacity:0,pointerEvents:'none'}} onChange={e=>setValues(p=>({...p,[f.name]:e.target.files[0]||null}))} /></>)
 
     const t = ['email','url','tel','number','date','time','color','range'].includes(f.type) ? f.type : 'text'
-    return wrap(<>{label}<input type={t} name={f.name} value={values[f.name] || ''} placeholder={ph} onChange={onChange} style={inputSx} /></>)
+    return wrap(<>{label}<input id={f.name} type={t} name={f.name} value={values[f.name] || ''} placeholder={ph} onChange={onChange} style={inputSx} /></>)
   }
 
   function validateStep() {
@@ -321,7 +326,14 @@ console.log("Final URL:", API_URL + "/api/forms/" + FORM_ID + "/schema");
         </div>
       )}
       {renderFieldsWithNameRow()}
-      {currentStep === totalSteps && schema.captchaEnabled && <iframe src={API_URL + '/captcha?formId=' + FORM_ID} scrolling="no" style={{ border: 'none', width: '305px', height: '65px', overflow: 'hidden' }} />}
+      {currentStep === totalSteps && schema.captchaEnabled && (
+        <iframe
+          title="Form captcha"
+          src={API_URL + '/captcha?formId=' + FORM_ID}
+          scrolling="no"
+          style={{ border: 'none', width: '305px', height: '65px', overflow: 'hidden' }}
+        />
+      )}
       {apiError && <p style={{ padding: '10px 14px', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: (d.borderRadius || 6) + 'px', color: '#dc2626', fontSize: '14px', margin: 0 }}>{apiError}</p>}
       <div style={{ display: 'flex', gap: '8px' }}>
         {totalSteps > 1 && currentStep > 1 && (

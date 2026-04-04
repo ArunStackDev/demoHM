@@ -301,8 +301,7 @@ function Community() {
                 />
                 <div
                   className="flex items-center justify-center gap-2 bg-blue-300 h-5 w-20 rounded-2xl"
-                  role="tablist"
-                  aria-label="Community image selector"
+                    aria-label="Community image selector"
                 >
                   {dynamicImages.map((image, index) => (
                     <button

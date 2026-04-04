@@ -9,6 +9,7 @@ function Blog() {
         description="Insights and stories from Happymindz on senior care, wellness, and community living."
         schema="webpage"
       />
+      <h1 className="sr-only">Happymindz Blog</h1>
       Blog
     </div>
   );

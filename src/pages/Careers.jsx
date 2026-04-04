@@ -9,6 +9,7 @@ function Careers() {
         description="Join Happymindz and make a meaningful impact in senior care, wellness, and community support."
         schema="webpage"
       />
+      <h1 className="sr-only">Careers at Happymindz</h1>
       Careers
     </div>
   );

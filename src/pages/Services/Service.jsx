@@ -9,6 +9,7 @@ function Service() {
         description="Explore Happymindz senior care services including active ageing, community programs, home health, digital care, and travel."
         schema="webpage"
       />
+      <h1 className="sr-only">Services</h1>
       Service
     </div>
   );
